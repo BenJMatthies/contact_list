@@ -3,9 +3,11 @@ import ContactList from './components/ContactList'
 
 function App() {
 
+  const [selectedContactID, setSelectedContactID] = useState(null);
+  console.log(selectedContactID)
   return (
     <>
-      <ContactList />
+      {!selectedContactID ? <ContactList setSelectedContactID={setSelectedContactID}/> : null}
     </>
   )
 }
