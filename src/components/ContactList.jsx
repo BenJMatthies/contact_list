@@ -8,7 +8,7 @@ const dummyContacts = [
     { id: 4, name: "IG-88", phone: "999-999-9999", email: "bity-yoda-killa@droids.com" },
   ];
 
-export default function ContactList({setSelectedContactID}) { 
+export default function ContactList({setSelectedContact}) { 
 
     const [contacts, setContacts] = useState(dummyContacts);
 
@@ -28,16 +28,20 @@ export default function ContactList({setSelectedContactID}) {
         fetchContact();
     },[])
 
-    console.log(contacts)
+
     return ( 
-        <table>
+        <table className="table">
           <thead>
             <tr>
-              <th colSpan="3">Contact List</th>
+              <th className="header" colSpan="3" >
+                <div className="flex justify-between">
+                    <span className="text-xl">Contact List</span>
+                </div>
+              </th>
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr className="rowTitle">
               <td>Name</td>
               <td>Email</td>
               <td>Phone</td>
@@ -45,7 +49,7 @@ export default function ContactList({setSelectedContactID}) {
             {
                // Map over data here
                contacts.map((contact) => {
-                return <ContactRow key={contact.id} contact={contact} setSelectedContactID={setSelectedContactID}/>
+                return <ContactRow key={contact.id} contact={contact} setSelectedContact={setSelectedContact}/>
                })
              }
           </tbody>
